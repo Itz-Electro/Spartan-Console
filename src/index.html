@@ -3,30 +3,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse</title>
+    <title>Spartan GUI</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main-gui.js"></script>
+    <script src="gui.js" defer></script>
 </head>
 <body>
-    <!-- Create the menu container -->
-  <div class="menu">
-    <!-- Add some menu items -->
-    <div class="menu-item selected">
-      <img class="menu-item-icon" src="gamepad-icon.png" alt="Gamepad Icon">
-      Play Games
-    </div>
-    <div class="menu-item">
-      <img class="menu-item-icon" src="settings-icon.png" alt="Settings Icon">
-      Settings
-    </div>
-    <div class="menu-item">
-      <img class="menu-item-icon" src="achievements-icon.png" alt="Achievements Icon">
-      Achievements
-    </div>
-    <div class="menu-item">
-      <img class="menu-item-icon" src="store-icon.png" alt="Store Icon">
-      Store
-    </div>
-  </div>
+    <header>
+        <div>Temperary Console GUI</div>
+    </header>
+    <main>
+        <div id="recent-plays">
+            <div class="recent-game">
+                Game Name
+            </div>
+            <div class="recent-game">
+                Game Name
+            </div>
+            <div class="recent-game">
+                Game Name
+            </div>
+            
+        </div>
+        <div>
+            <h1>Load Game Directly</h1>
+            <input type="text" placeholder="Game Name...">
+            <button>Load</button>
+        </div>
+        <div>
+            <h1>Detected Game Files</h1>
+            <ul>
+                <li>Placeholder Game Title</li>
+            </ul>
+        </div>
+    </main>
 </body>
 </html>

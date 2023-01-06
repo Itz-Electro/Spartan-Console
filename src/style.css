@@ -1,40 +1,57 @@
-/* Add some styling for the menu container */
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    height: 80%;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-  
-  /* Style the menu items */
-  .menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 20%;
-    font-size: 1.5em;
+@font-face {
+    font-family: mplus1pbold;
+    src: url('./Fonts/mplus1pbold.ttf');
+}
+
+body {
+    background-color: black;
     color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  /* Add some hover effects for the menu items */
-  .menu-item:hover {
-    background-color: #333;
-  }
-  
-  /* Style the selected menu item */
-  .menu-item.selected {
-    background-color: #555;
-  }
-  
-  /* Add an icon for each menu item */
-  .menu-item-icon {
-    margin-right: 10px;
-  }
+    margin: 0;
+    font-family: 'mplus1pbold'
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 60px;
+    width: 100%;
+    display: flex;
+}
+
+header div {
+    height: 100%;
+    flex-grow: 1;
+    padding-left: 20px;
+    line-height: 62px;
+}
+
+main {
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+main div:not(:first-child) {
+    border: 0px;
+    border-top: 10px;
+    border-color: red;
+    border-style: inset;
+    margin-top: 20px;
+}
+
+#recent-plays {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 30px;
+}
+
+.recent-game {
+    border-style: none;
+    height: 80%;
+    aspect-ratio: 1;
+    background-color: red;
+    margin-right: 30px;
+}
+
