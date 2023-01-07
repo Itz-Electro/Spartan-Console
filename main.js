@@ -1,24 +1,29 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1600,
+    height: 900,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
+  ipcMain.on('set-title', (event, title) => {
+    const webContents = event.sender
+    const win = BrowserWindow.fromWebContents(webContents)
+    win.setTitle(title)
+  })
+
   // and load the index.html of the app.
   mainWindow.loadFile('./src/index.html')
-
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
