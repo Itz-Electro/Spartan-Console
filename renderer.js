@@ -1,4 +1,3 @@
-
 function setTitle(title) {
     window.electron.setTitle(title)
 }

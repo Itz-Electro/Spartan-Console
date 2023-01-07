@@ -2,8 +2,6 @@ const recentGames = document.getElementById('recent-plays')
 const loadButton = document.getElementById('loadButton')
 const gamelist = document.getElementById('game-list-content')
 
-setTitle('Hello World!')
-
 addRecentGame('Place Holder Game')
 function addRecentGame(title) {
     
@@ -31,6 +29,8 @@ function addGame(title) {
     });
 }
 function detectGames() {
+    //let gamesDir = readDirectory('./Game Files')
+    //console.log(gamesDir)
     for (var i=0; i<5; i++) {
         addGame(`Place Holder ${i+1}`)
     }
