@@ -19,7 +19,12 @@ const createWindow = () => {
     const win = BrowserWindow.fromWebContents(webContents)
     win.setTitle(title)
   })
-
+  ipcMain.on('load-file', (event, file) => {
+    const webContents = event.sender
+    const win = BrowserWindow.fromWebContents(webContents)
+    win.loadFile(file)
+  })
+  
   // and load the index.html of the app.
   mainWindow.loadFile('./src/index.html')
   // Open the DevTools.

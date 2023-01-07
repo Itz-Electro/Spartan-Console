@@ -4,6 +4,8 @@ const gamelist = document.getElementById('game-list-content')
 
 setTitle('Hello World!')
 
+loadFile('./src/testing/test.html')
+
 addRecentGame('Place Holder Game')
 function addRecentGame(title) {
     
@@ -35,5 +37,3 @@ function detectGames() {
         addGame(`Place Holder ${i+1}`)
     }
 }
-
-preload.setTitle('Hello World')

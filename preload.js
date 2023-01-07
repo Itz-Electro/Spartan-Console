@@ -1,3 +1,5 @@
+const { contextBridge, ipcRenderer } = require('electron')
+
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector, text) => {
       const element = document.getElementById(selector)
@@ -9,7 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-
-function setTitle(title) {
-    ipcRenderer.send('set-title', title)
-}
+//Set Title
+contextBridge.exposeInMainWorld('electron', {
+    setTitle: (title) => ipcRenderer.send('set-title', title),
+    loadFile: (path) => ipcRenderer.send('load-file', path)
+})

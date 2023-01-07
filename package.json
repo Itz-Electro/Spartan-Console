@@ -8,7 +8,7 @@
   },
   "author": "Electro",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^22.0.0"
   }
 }
