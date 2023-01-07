@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    form {
+      display: flex;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      margin-right: 8px;
+      padding: 8px;
+    }
+
+    button[type="submit"] {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+
+    ul {
+      margin: 16px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    li + li {
+      border-top: 1px solid #ccc;
+    }
+
+    li input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    .delete-button {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      padding: 8px 16px;
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do App</h1>
+  <form>
+    <input type="text" id="task" placeholder="Enter task">
+    <button type="submit" id="add-button">Add</button>
+  </form>
+  <ul id="tasks"></ul>
+
+  <script>
+    const addButton = document.getElementById('add-button');
+    const taskInput = document.getElementById('task');
+    const tasksList = document.getElementById('tasks');
+
+    addButton.addEventListener('click', event => {
+      event.preventDefault();
+      const task = taskInput.value;
+      if (task) {
+        addTask(task);
+        taskInput.value = '';
+      }
+    });
+
+    function addTask(task) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${task}
+        <button type="button" class="delete-button">Delete</button>
+      `;
+      tasksList.appendChild(li);
+
+      // Add an event listener to the delete button
+      const deleteButton = li.querySelector('.delete-button');
+      deleteButton.addEventListener('click', event => {
+        tasksList.removeChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

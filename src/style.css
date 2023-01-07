@@ -3,15 +3,21 @@
     src: url('./Fonts/mplus1pbold.ttf');
 }
 
+:root {
+    --lighter: rgba(255, 255, 255, 0.1);
+}
+
 body {
     background-color: black;
     color: white;
     margin: 0;
-    font-family: 'mplus1pbold'
+    font-family: 'mplus1pbold';
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--lighter);
     height: 60px;
     width: 100%;
     display: flex;
@@ -29,16 +35,20 @@ main {
     height: calc(100% - 60px);
 }
 
-main div:not(:first-child) {
+#load-direct, #game-list {
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px;
     border: 0px;
     border-top: 10px;
-    border-color: red;
+    border-color: var(--lighter);
     border-style: inset;
     margin-top: 20px;
 }
 
 #recent-plays {
-    height: 100px;
+    box-sizing: border-box;
+    height: 60px;
     width: 100%;
     display: flex;
     justify-content: left;
@@ -48,10 +58,49 @@ main div:not(:first-child) {
 }
 
 .recent-game {
-    border-style: none;
-    height: 80%;
-    aspect-ratio: 1;
-    background-color: red;
+    height: 40px;
+    line-height: 20px;
+    background-color: var(--lighter);
     margin-right: 30px;
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: pointer;
 }
 
+#directInput {
+    background-color: var(--lighter);
+    color: white;
+    border-style: none;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#game-list-content {
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+}
+
+.game-item {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.game-item:hover {
+    background-color: var(--lighter);
+}
+
+#loadButton, .delete-game {
+    border-style: none;
+    background-color: var(--lighter);
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    width: fit-content;
+}
+
+.delete-game {
+    margin-left: 80%;
+    height: 100%;
+}
