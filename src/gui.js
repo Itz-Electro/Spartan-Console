@@ -1,3 +1,5 @@
+import { readdirSync } from "original-fs"
+
 const recentGames = document.getElementById('recent-plays')
 const loadButton = document.getElementById('loadButton')
 const gamelist = document.getElementById('game-list-content')
@@ -35,3 +37,5 @@ function detectGames() {
         addGame(`Place Holder ${i+1}`)
     }
 }
+
+console.log(readdirSync('./Game Files'))

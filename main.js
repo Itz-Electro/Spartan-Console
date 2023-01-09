@@ -3,6 +3,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
+const fs = require('fs')
 
 const createWindow = () => {
   // Create the browser window.
@@ -20,10 +21,13 @@ const createWindow = () => {
     const win = BrowserWindow.fromWebContents(webContents)
     win.setTitle(title)
   })
-  ipcMain.on('load-file', (event, file) => {
+  ipcMain.on('load-file', (event, path) => {
     const webContents = event.sender
     const win = BrowserWindow.fromWebContents(webContents)
-    win.loadFile(file)
+    win.loadFile(path)
+  })
+  ipcMain.on('read-directory', (event, path) => {
+    return fs.readdirSync(path)
   })
   
   // and load the index.html of the app.
