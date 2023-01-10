@@ -1,5 +1,6 @@
-const { contextBridge, ipcRenderer } = require('electron')
-const { readdir } = require('original-fs')
+const { contextBridge, ipcRenderer, BrowserWindow } = require('electron')
+const path = require('path')
+const fs = require('fs')
 
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector, text) => {
@@ -16,5 +17,19 @@ window.addEventListener('DOMContentLoaded', () => {
 contextBridge.exposeInMainWorld('electron', {
     setTitle: (title) => ipcRenderer.send('set-title', title),
     loadFile: (path) => ipcRenderer.send('load-file', path),
-    readDir: (path) => ipcRenderer.send('read-directory', path)
+    readDirectory: (dirPath) => {
+      return fs.readdirSync(path.join(__dirname, dirPath))
+    },
+    updateJSON: (path, content) => {
+      fs.writeFileSync(path, JSON.stringify(content));
+    },
+    readFile: (path) => {
+      return fs.readFileSync(path, 'utf-8');
+    },
+})
+
+contextBridge.exposeInMainWorld('gameAPI', {
+  setTitle: (title) => ipcRenderer.send('set-title', title),
+  quitGame: () => ipcRenderer.send('load-file', './src/index.html'),
+  reloadGame: () => ipcRenderer.send('load-file', BrowserWindow.fromWebContents.path),
 })

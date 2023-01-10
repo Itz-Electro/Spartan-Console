@@ -1,12 +1,10 @@
-import { readdirSync } from "original-fs"
-
 const recentGames = document.getElementById('recent-plays')
+const directInput = document.getElementById('directInput')
 const loadButton = document.getElementById('loadButton')
 const gamelist = document.getElementById('game-list-content')
 
-addRecentGame('Place Holder Game')
+function clearRecentGames() {recentGames.innerHTML = ''}
 function addRecentGame(title) {
-    
     let game = document.createElement('div')
     game.classList.add('recent-game')
     game.append(
@@ -15,7 +13,7 @@ function addRecentGame(title) {
     recentGames.append(game)
 }
 
-detectGames()
+
 function addGame(title) {
     let game = document.createElement('li')
     let buttonElement = '<button type="button" class="delete-game">Delete</button>'
@@ -30,12 +28,7 @@ function addGame(title) {
         gamelist.removeChild(game);
     });
 }
-function detectGames() {
-    //let gamesDir = readDirectory('./Game Files')
-    //console.log(gamesDir)
-    for (var i=0; i<5; i++) {
-        addGame(`Place Holder ${i+1}`)
-    }
-}
 
-console.log(readdirSync('./Game Files'))
+loadButton.addEventListener('click', (event) => {
+    launchGame(directInput.value)
+})
